@@ -127,14 +127,26 @@
     }
 
     /* ===== NAV ===== */
-    nav {
-      text-align: center;
-      padding: 15px;
-      background: #111;
-      position: sticky;
-      top: 0;
-      z-index: 10;
-    }
+nav {
+  text-align: center;
+  padding: 15px;
+  background: #111;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+
+  display: flex;               /* ← 追加 */
+  justify-content: center;     /* ← 追加 */
+  gap: 32px;                   /* ← 追加（好きに調整） */
+  flex-wrap: nowrap;           /* ← 強制的に 1 行 */
+}
+@media (max-width: 600px) {
+  nav {
+    flex-wrap: nowrap;   /* ← スマホでも 1 行 */
+    gap: 20px;
+  }
+}
+
 
     nav a {
       margin: 0 12px;
@@ -211,14 +223,13 @@
 
 /* 写真：丸・少し大きめ */
 .member-photo {
-  width: 80px;     /* 好みで 80〜100px に調整してOK */
-  height: 80px;
-  border-radius: 50%;
+  width: 200px;     /* 好みで 80〜100px に調整してOK */
+  height: 200px;
+  border-radius: 5%;
   object-fit: cover;
   filter: grayscale(30%);
   opacity: 0.95;
   transition: 0.25s ease;
-  border: 1px solid rgba(255,255,255,0.3);
 }
 
 /* ホバーでちょい色が戻る */
@@ -234,20 +245,33 @@
   flex-direction: column;
   gap: 8px;
 }
-
-/* 上段：役割＋名前 vs SNS アイコン */
+/* 役割 + 名前 + SNS を横にまとめた上段 */
 .member-top {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
-  gap: 12px;
+  align-items: center;   /* ← ここ大事！ */
+  width: 100%;
 }
 
-/* 左側（役割＋名前） */
+/* パート + 名前（縦並び） */
 .member-title {
   display: flex;
   flex-direction: column;
   gap: 4px;
+}
+
+/* SNS アイコンの位置固定（右上） */
+.member-sns-icons {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+/* 説明文を下の段へ */
+.member-bio {
+  margin-top: 8px;     /* ← 上段と間隔を空ける */
+  font-size: 0.85rem;
+  line-height: 1.6;
 }
 
 .member-role-label {
@@ -260,20 +284,6 @@
 .member-name {
   font-size: 1.05rem;
   font-weight: 600;
-}
-
-/* 好きな音楽などのテキスト */
-.member-bio {
-  font-size: 0.85rem;
-  line-height: 1.6;
-  opacity: 0.85;
-}
-
-/* SNSアイコン行（右上）*/
-.member-sns-icons {
-  display: flex;
-  gap: 10px;
-  font-size: 0.95rem;
 }
 
 .member-sns-icons a {
@@ -296,8 +306,8 @@
   }
 
   .member-photo {
-    width: 72px;
-    height: 72px;
+    width: 100px;
+    height: 120px;
   }
 
   .member-top {
@@ -364,8 +374,8 @@
   }
 
   .member-photo {
-    width: 68px;                  /* ちょっと小さめ */
-    height: 68px;
+    width: 100px;
+    height: 120px;
   }
 
   .member-body {
@@ -512,7 +522,7 @@
     <div class="hero-inner">
       <!-- span でくくってシャッとアニメ -->
       <h1 class="hero-title"><span>DOUBLE STANDARD</span></h1>
-      <div class="hero-sub">COVER BAND</div>
+      <div class="hero-sub">LIVE SESSION PROJECT</div>
     </div>
   </div>
 
@@ -522,7 +532,6 @@
     <a href="#live">Live</a>
     <a href="#member">Member</a>
     <a href="#music">YouTube</a>
-    <a href="#contact">Contact</a>
   </nav>
 
   <div class="container">
@@ -598,14 +607,14 @@
             <span class="member-role-label">VOCAL</span>
             <span class="member-name">kiri</span>
           </div>
-          <div class="member-sns-icons">
-            <a href="#" target="_blank" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
-            <a href="#" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-          </div>
         </div>
         <p class="member-bio">
           好きな音楽：○○○ / △△△ など。エモーショナルな洋楽ロックとJ-POPをルーツに、感情の振れ幅が大きいボーカルを担当。
         </p>
+          <div class="member-sns-icons">
+            <a href="#" target="_blank" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="#" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          </div>
       </div>
     </article>
 
@@ -618,15 +627,14 @@
             <span class="member-role-label">GUITAR</span>
             <span class="member-name">YouthK</span>
           </div>
-          <div class="member-sns-icons">
-            <a href="#" target="_blank" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
-            <a href="#" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-          </div>
         </div>
         <p class="member-bio">
           好きな音楽：○○○ / △△△。クリーンから轟音まで、楽曲に合わせた空気感づくりとメロディアスなフレーズが持ち味。
         </p>
-      </div>
+          <div class="member-sns-icons">
+            <a href="#" target="_blank" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="#" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          </div>      </div>
     </article>
 
     <!-- Ba. あかね -->
@@ -638,14 +646,14 @@
             <span class="member-role-label">BASS</span>
             <span class="member-name">あかね</span>
           </div>
-          <div class="member-sns-icons">
-            <a href="#" target="_blank" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
-            <a href="#" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-          </div>
         </div>
         <p class="member-bio">
           好きな音楽：○○○ / △△△。ボトムを支えつつ、歌とドラムの隙間を埋めるグルーヴ感重視のベーススタイル。
         </p>
+          <div class="member-sns-icons">
+            <a href="#" target="_blank" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="#" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          </div>
       </div>
     </article>
 
@@ -658,15 +666,14 @@
             <span class="member-role-label">KEYS</span>
             <span class="member-name">プッチー</span>
           </div>
-          <div class="member-sns-icons">
-            <a href="#" target="_blank" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
-            <a href="#" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-          </div>
         </div>
         <p class="member-bio">
           好きな音楽：○○○ / △△△。シンセとピアノでサウンドに厚みと色を足す、バンドの空気担当。
         </p>
-      </div>
+          <div class="member-sns-icons">
+            <a href="#" target="_blank" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="#" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          </div>      </div>
     </article>
 
     <!-- Dr. mabo -->
@@ -678,14 +685,14 @@
             <span class="member-role-label">DRUMS</span>
             <span class="member-name">mabo</span>
           </div>
-          <div class="member-sns-icons">
-            <a href="#" target="_blank" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
-            <a href="#" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-          </div>
         </div>
         <p class="member-bio">
           好きな音楽：○○○ / △△△。タイトなビートとダイナミクスで、バンド全体のノリをコントロールするドラマー。
         </p>
+                  <div class="member-sns-icons">
+            <a href="#" target="_blank" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="#" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          </div>
       </div>
     </article>
 
@@ -704,14 +711,6 @@
         <i class="fa-brands fa-youtube"></i>
         <span>DOUBLE STANDARD Official YouTube</span>
       </a>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact">
-      <h2>Contact</h2>
-      <p>ライブのお誘い・お問い合わせはこちら</p>
-      <!-- メールアドレスを書き換え -->
-      <p><a href="mailto:example@example.com" style="color:#fff;">example@example.com</a></p>
     </section>
 
   </div>
