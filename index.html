@@ -4,6 +4,18 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>DOUBLE STANDARD - Official Site</title>
+<!-- ▼ OGP 基本設定 ▼ -->
+<meta property="og:title" content="DOUBLE STANDARD - Official Site">
+<meta property="og:description" content="DOUBLE STANDARD 最新ライブ情報・メンバー紹介はこちら">
+<meta property="og:image" content="https://akane-kkr.github.io/DoubleStandard-site/img/ogp.png">
+<meta property="og:url" content="https://doublestandard.vercel.app/">
+<meta property="og:type" content="website">
+
+<!-- ▼ Twitterカード（X用） ▼ -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="DOUBLE STANDARD - Official Site">
+<meta name="twitter:description" content="DOUBLE STANDARD 最新ライブ情報・メンバー紹介はこちら">
+<meta property="og:image" content="https://akane-kkr.github.io/DoubleStandard-site/img/ogp.png">
 
   <!-- SNSアイコン用（Font Awesome） -->
   <link rel="stylesheet"
@@ -510,6 +522,16 @@ nav {
     max-height: 80vh;
   }
 }
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-in.show {
+  opacity: 1;
+  transform: translateY(0);
+}
 
   </style>
 
@@ -562,7 +584,7 @@ nav {
       <strong>Place：</strong>大阪・中津 vi-code<br>
     </div>
 
-    <p class="live-meta">
+    <p class="live-meta fade-in">
       2024年関西に戻ってきた流浪のドラマーのアニバーサリーと言うことで所縁のあるメンバーとの長い約束を果たす 約束SESSIONと
 現在maboがサポートしている今一番聴いてほしいバンドCandyRain
 パーマネントで参加している 何が飛び出るかわからないバンドDoubble Standard が集合。
@@ -610,7 +632,7 @@ nav {
             <span class="member-name">kiri</span>
           </div>
         </div>
-        <p class="member-bio">
+        <p class="member-bio fade-in">
           好きな音楽：○○○ / △△△ など。自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文
         </p>
 <div class="member-sns-icons">
@@ -638,7 +660,7 @@ nav {
             <span class="member-name">YouthK</span>
           </div>
         </div>
-        <p class="member-bio">
+        <p class="member-bio fade-in">
           好きな音楽：○○○ / △△△ など。自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文
         </p>
 <div class="member-sns-icons">
@@ -665,7 +687,7 @@ nav {
             <span class="member-name">あかね</span>
           </div>
         </div>
-        <p class="member-bio">
+        <p class="member-bio fade-in">
           好きな音楽：○○○ / △△△ など。自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文
         </p>
 <div class="member-sns-icons">
@@ -693,7 +715,7 @@ nav {
             <span class="member-name">プッチー</span>
           </div>
         </div>
-        <p class="member-bio">
+        <p class="member-bio fade-in">
           好きな音楽：○○○ / △△△ など。自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文自己紹介文
         </p>
 <div class="member-sns-icons">
@@ -721,7 +743,7 @@ nav {
             <span class="member-name">mabo</span>
           </div>
         </div>
-        <p class="member-bio">
+        <p class="member-bio fade-in">
           18歳から活動を続けるドラマー。30年以上にわたり数多くのレコーディング作品に参加し、確かなリズムと柔軟な表現力で楽曲に深みを与えてきた。代表作は2013年リリースの Love per Blemish Duo 『Roar of the Still』ギターとドラムによる即興的な構築を軸に、ジャズとブルースを融合させた作品で、曽我のドラミングは緊張感と余白を活かしながら独自のグルーヴを刻み込んでいる。
         </p>
         <div class="member-sns-icons">
@@ -848,6 +870,25 @@ Place：大阪・中津 vi-code
       });
     });
   });  // ★ ここで DOMContentLoaded を閉じる！
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+  const fadeElems = document.querySelectorAll('.fade-in');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('show');
+        observer.unobserve(entry.target);  // 1回だけ表示
+      }
+    });
+  }, {
+    threshold: 0.2
+  });
+
+  fadeElems.forEach(el => observer.observe(el));
+});
 </script>
 
 </body>
