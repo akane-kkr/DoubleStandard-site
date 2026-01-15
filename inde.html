@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DOUBLE STANDARD - Official Site</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      background: #000;
+      color: #eee;
+      overflow-x: hidden;
+    }
+
+    /* ヒーロー（トップ） */
+    .hero {
+      height: 80vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: linear-gradient(180deg, #111, #000);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* 薄い光が動くアニメーション */
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -50%;
+      width: 200%;
+      height: 100%;
+      background: linear-gradient(
+        120deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.15) 50%,
+        transparent 100%
+      );
+      animation: shine 6s infinite linear;
+    }
+
+    @keyframes shine {
+      0% { transform: translateX(-50%); }
+      100% { transform: translateX(50%); }
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      z-index: 2;
+    }
+
+    nav {
+      text-align: center;
+      padding: 15px;
+      background: #111;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    nav a {
+      margin: 0 12px;
+      color: #eee;
+      text-decoration: none;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+    }
+
+    nav a:hover {
+      color: #fff;
+      text-shadow: 0 0 5px #fff;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    h2 {
+      border-left: 4px solid #fff;
+      padding-left: 10px;
+      margin-top: 60px;
+      text-transform: uppercase;
+    }
+
+    /* LIVE */
+    .live-item {
+      border-bottom: 1px solid #333;
+      padding: 12px 0;
+    }
+
+    /* MEMBER */
+    .member-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .member {
+      padding: 15px;
+      background: #111;
+      border-radius: 6px;
+      text-align: center;
+      transition: 0.3s;
+    }
+
+    .member:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 10px rgba(255,255,255,0.2);
+    }
+
+    .member-name {
+      font-weight: bold;
+      margin-bottom: 5px;
+      font-size: 1.1rem;
+    }
+
+    /* FOOTER */
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      opacity: 0.5;
+      margin-top: 60px;
+      padding-bottom: 40px;
+    }
+
+    /* スマホ向け */
+    @media (max-width: 600px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ヒーロー -->
+  <div class="hero">
+    <h1>DOUBLE STANDARD</h1>
+  </div>
+
+  <!-- ナビ -->
+  <nav>
+    <a href="#news">News</a>
+    <a href="#live">Live</a>
+    <a href="#member">Member</a>
+    <a href="#music">YouTube</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <div class="container">
+
+    <!-- NEWS -->
+    <section id="news">
+      <h2>News</h2>
+      <p>2026.03.28　次回ライブ情報を更新しました。</p>
+    </section>
+
+    <!-- LIVE -->
+    <section id="live">
+      <h2>Live</h2>
+
+      <div class="live-item">
+        <div><strong>2026/03/28 (Sat) 中津 vi-code</strong></div>
+        <div>OPEN 14:30 / START 15:00</div>
+        <div>¥3000 + 1D (¥600)</div>
+      </div>
+
+    </section>
+
+    <!-- MEMBER -->
+    <section id="member">
+      <h2>Member</h2>
+
+      <div class="member-list">
+
+        <div class="member">
+          <div class="member-name">Vo. きり</div>
+        </div>
+
+        <div class="member">
+          <div class="member-name">Gt. YouthK</div>
+        </div>
+
+        <div class="member">
+          <div class="member-name">Ba. あかね</div>
+        </div>
+
+        <div class="member">
+          <div class="member-name">Key. プッチー</div>
+        </div>
+
+        <div class="member">
+          <div class="member-name">Dr. mabo</div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- YOUTUBE -->
+    <section id="music">
+      <h2>YouTube</h2>
+      <p>最新動画はこちら：</p>
+
+      <!-- あなたのYouTubeチャンネルURLをここに入力 -->
+      <p><a href="https://www.youtube.com/" target="_blank" style="color:#fff;">YouTube Channel</a></p>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>ライブのお誘い・お問い合わせはこちら</p>
+      <p><a href="mailto:example@example.com" style="color:#fff;">example@example.com</a></p>
+    </section>
+
+  </div>
+
+  <div class="footer">
+    © 2026 DOUBLE STANDARD. All Rights Reserved.
+  </div>
+
+</body>
+</html>
