@@ -701,6 +701,28 @@ nav {
     transform: translate(-2px, 1px);
   }
 }
+/* ロゴ全体を「左からスライドイン」させるラッパ */
+.hero-logo-slide {
+  display: inline-block;
+  transform: translateX(-120%);
+  opacity: 0;
+  animation: logoSlideIn 1s ease-out forwards;
+}
+
+/* 左からシュッと入ってくるアニメ */
+@keyframes logoSlideIn {
+  0% {
+    transform: translateX(-120%);
+    opacity: 0;
+  }
+  60% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
 
   </style>
 
@@ -713,8 +735,11 @@ nav {
     <div class="hero-inner">
       <!-- span でくくってシャッとアニメ -->
       <h1 class="hero-title">
-  <img src="img/logo.png" class="logo-glitch" alt="DOUBLE STANDARD">
+  <span class="hero-logo-slide">
+    <img src="img/logo.png" class="logo-glitch" alt="DOUBLE STANDARD">
+  </span>
 </h1>
+
 
 
       <div class="hero-sub">LIVE SESSION PROJECT</div>
