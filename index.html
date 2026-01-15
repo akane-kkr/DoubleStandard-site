@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>DOUBLE STANDARD - Official Site</title>
 
-  <!-- アイコン用（Font Awesome） -->
+  <!-- SNSアイコン用（Font Awesome） -->
   <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
         integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
@@ -21,7 +21,7 @@
       overflow-x: hidden;
     }
 
-    /* ヒーロー（トップ） */
+    /* ===== HERO（ヘッダー） ===== */
     .hero {
       height: 80vh;
       display: flex;
@@ -33,20 +33,20 @@
       color: #fff;
     }
 
-    /* 背景写真＋暗めのフィルター */
+    /* 背景写真＋暗めフィルター */
     .hero::before {
       content: "";
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(180deg, rgba(0,0,0,0.4), rgba(0,0,0,0.8)),
+        linear-gradient(180deg, rgba(0,0,0,0.4), rgba(0,0,0,0.85)),
         url("img/header.jpg") center center / cover no-repeat;
       z-index: 1;
       transform: scale(1.05);
       filter: blur(0.5px);
     }
 
-    /* 薄い光が流れるアニメーション（上にかぶせる） */
+    /* 薄い光がスーッと動く */
     .hero::after {
       content: "";
       position: absolute;
@@ -76,20 +76,59 @@
       z-index: 3;
     }
 
-    .hero h1 {
+    /* ===== タイトルの「シャッ」とアニメ ===== */
+    .hero-title {
       font-size: 3rem;
       letter-spacing: 0.2em;
       text-transform: uppercase;
       margin: 0;
+      overflow: hidden; /* 左から右のマスク用 */
+    }
+
+    .hero-title span {
+      display: inline-block;
+      transform: translateX(-110%);
+      opacity: 0;
+      animation: title-slide 1.1s ease-out forwards;
+    }
+
+    @keyframes title-slide {
+      0% {
+        transform: translateX(-110%);
+        opacity: 0;
+      }
+      60% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateX(0);
+        opacity: 1;
+      }
     }
 
     .hero-sub {
       margin-top: 10px;
       font-size: 0.9rem;
-      letter-spacing: 0.2em;
+      letter-spacing: 0.25em;
       text-transform: uppercase;
+      opacity: 0;
+      transform: translateX(-30px);
+      animation: sub-fade 0.9s ease-out forwards;
+      animation-delay: 0.4s;
     }
 
+    @keyframes sub-fade {
+      0% {
+        opacity: 0;
+        transform: translateX(-30px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    /* ===== NAV ===== */
     nav {
       text-align: center;
       padding: 15px;
@@ -112,6 +151,7 @@
       text-shadow: 0 0 5px #fff;
     }
 
+    /* ===== 共通レイアウト ===== */
     .container {
       max-width: 900px;
       margin: 0 auto;
@@ -123,75 +163,79 @@
       padding-left: 10px;
       margin-top: 60px;
       text-transform: uppercase;
+      letter-spacing: .12em;
+      font-size: 1rem;
     }
 
-    /* LIVE */
+    /* ===== LIVE ===== */
     .live-item {
       border-bottom: 1px solid #333;
       padding: 12px 0;
     }
 
-    /* MEMBER：縦並び */
-    .member-list {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-      margin-top: 20px;
+    /* ===== MEMBER（ONE OK ROCK 風）===== */
+    #member {
+      margin-top: 40px;
     }
 
-    .member {
-      padding: 15px 12px;
-      background: #111;
-      border-radius: 6px;
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-      transition: 0.3s;
+    .member-intro {
+      font-size: 0.9rem;
+      opacity: 0.8;
+      margin-top: 10px;
     }
 
-    .member:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 0 10px rgba(255,255,255,0.18);
+    .member-table {
+      margin-top: 24px;
+      font-size: 0.95rem;
+      letter-spacing: 0.12em;
     }
 
-    .member-main {
+    .member-row {
       display: flex;
       justify-content: space-between;
-      align-items: baseline;
-      gap: 10px;
+      align-items: center;
+      padding: 8px 0;
+      border-bottom: 1px solid #222;
+    }
+
+    .member-role {
+      opacity: 0.7;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+    }
+
+    .member-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
       flex-wrap: wrap;
+      justify-content: flex-end;
     }
 
     .member-name {
-      font-weight: bold;
-      font-size: 1.1rem;
+      font-weight: 600;
+      font-size: 0.95rem;
     }
 
-    .member-part {
-      font-size: 0.9rem;
-      opacity: 0.8;
-    }
-
-    .member-sns {
-      margin-top: 5px;
+    .member-sns-icons {
       display: flex;
-      gap: 10px;
-      font-size: 1.1rem;
+      gap: 8px;
+      font-size: 0.95rem;
     }
 
-    .sns-icon {
+    .member-sns-icons a {
       color: #eee;
-      text-decoration: none;
       opacity: 0.8;
+      text-decoration: none;
       transition: 0.2s;
     }
 
-    .sns-icon:hover {
+    .member-sns-icons a:hover {
       opacity: 1;
       transform: translateY(-1px);
     }
 
-    /* YOUTUBE セクション */
+    /* ===== YouTubeリンク ===== */
     .yt-link {
       display: inline-flex;
       align-items: center;
@@ -202,13 +246,14 @@
       text-decoration: none;
       color: #fff;
       font-size: 0.9rem;
+      margin-top: 8px;
     }
 
     .yt-link i {
       font-size: 1.1rem;
     }
 
-    /* FOOTER */
+    /* ===== FOOTER ===== */
     .footer {
       text-align: center;
       font-size: 0.8rem;
@@ -217,14 +262,24 @@
       padding-bottom: 40px;
     }
 
-    /* スマホ向け */
+    /* ===== スマホ ===== */
     @media (max-width: 600px) {
       .hero {
         height: 70vh;
       }
-      .hero h1 {
+      .hero-title {
         font-size: 2.1rem;
         letter-spacing: 0.12em;
+      }
+      .member-row {
+        flex-direction: row;
+        align-items: flex-start;
+      }
+      .member-role {
+        min-width: 80px;
+      }
+      .member-right {
+        justify-content: flex-start;
       }
     }
   </style>
@@ -232,15 +287,16 @@
 
 <body>
 
-  <!-- ヒーロー -->
+  <!-- HERO -->
   <div class="hero">
     <div class="hero-inner">
-      <h1>DOUBLE STANDARD</h1>
-      <div class="hero-sub">Cover Band</div>
+      <!-- span でくくってシャッとアニメ -->
+      <h1 class="hero-title"><span>DOUBLE STANDARD</span></h1>
+      <div class="hero-sub">COVER BAND</div>
     </div>
   </div>
 
-  <!-- ナビ -->
+  <!-- NAV -->
   <nav>
     <a href="#news">News</a>
     <a href="#live">Live</a>
@@ -269,85 +325,74 @@
 
     </section>
 
-    <!-- MEMBER（縦並び＋SNSアイコン） -->
+    <!-- MEMBER（OOR風） -->
     <section id="member">
       <h2>Member</h2>
 
-      <div class="member-list">
+      <p class="member-intro">
+        Emotive Rock Cover Band "DOUBLE STANDARD"<br>
+        Osaka, Japan.
+      </p>
 
-        <div class="member">
-          <div class="member-main">
-            <div class="member-name">きり</div>
-            <div class="member-part">Vo.</div>
-          </div>
-          <div class="member-sns">
-            <!-- URLを書き換えて使ってね -->
-            <a class="sns-icon" href="#" target="_blank" aria-label="X">
-              <i class="fa-brands fa-x-twitter"></i>
-            </a>
-            <a class="sns-icon" href="#" target="_blank" aria-label="Instagram">
-              <i class="fa-brands fa-instagram"></i>
-            </a>
+      <div class="member-table">
+        <!-- Vo -->
+        <div class="member-row">
+          <div class="member-role">VOCAL:</div>
+          <div class="member-right">
+            <span class="member-name">きり</span>
+            <div class="member-sns-icons">
+              <!-- URLが決まったら # を書き換えてね -->
+              <a href="#" target="_blank" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
+              <a href="#" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            </div>
           </div>
         </div>
 
-        <div class="member">
-          <div class="member-main">
-            <div class="member-name">YouthK</div>
-            <div class="member-part">Gt.</div>
-          </div>
-          <div class="member-sns">
-            <a class="sns-icon" href="#" target="_blank" aria-label="X">
-              <i class="fa-brands fa-x-twitter"></i>
-            </a>
-            <a class="sns-icon" href="#" target="_blank" aria-label="Instagram">
-              <i class="fa-brands fa-instagram"></i>
-            </a>
+        <!-- Gt -->
+        <div class="member-row">
+          <div class="member-role">GUITAR:</div>
+          <div class="member-right">
+            <span class="member-name">YouthK</span>
+            <div class="member-sns-icons">
+              <a href="#" target="_blank" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
+              <a href="#" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            </div>
           </div>
         </div>
 
-        <div class="member">
-          <div class="member-main">
-            <div class="member-name">あかね</div>
-            <div class="member-part">Ba.</div>
-          </div>
-          <div class="member-sns">
-            <a class="sns-icon" href="#" target="_blank" aria-label="X">
-              <i class="fa-brands fa-x-twitter"></i>
-            </a>
-            <a class="sns-icon" href="#" target="_blank" aria-label="Instagram">
-              <i class="fa-brands fa-instagram"></i>
-            </a>
+        <!-- Ba -->
+        <div class="member-row">
+          <div class="member-role">BASS:</div>
+          <div class="member-right">
+            <span class="member-name">あかね</span>
+            <div class="member-sns-icons">
+              <a href="#" target="_blank" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
+              <a href="#" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            </div>
           </div>
         </div>
 
-        <div class="member">
-          <div class="member-main">
-            <div class="member-name">プッチー</div>
-            <div class="member-part">Key.</div>
-          </div>
-          <div class="member-sns">
-            <a class="sns-icon" href="#" target="_blank" aria-label="X">
-              <i class="fa-brands fa-x-twitter"></i>
-            </a>
-            <a class="sns-icon" href="#" target="_blank" aria-label="Instagram">
-              <i class="fa-brands fa-instagram"></i>
-            </a>
+        <!-- Key -->
+        <div class="member-row">
+          <div class="member-role">KEYS:</div>
+          <div class="member-right">
+            <span class="member-name">プッチー</span>
+            <div class="member-sns-icons">
+              <a href="#" target="_blank" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
+              <a href="#" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            </div>
           </div>
         </div>
 
-        <div class="member">
-          <div class="member-main">
-            <div class="member-name">mabo</div>
-            <div class="member-part">Dr.</div>
-          </div>
-          <div class="member-sns">
-            <a class="sns-icon" href="#" target="_blank" aria-label="X">
-              <i class="fa-brands fa-x-twitter"></i>
-            </a>
-            <a class="sns-icon" href="#" target="_blank" aria-label="Instagram">
-              <i class="fa-brands fa-instagram"></i>
-            </a>
+        <!-- Dr -->
+        <div class="member-row">
+          <div class="member-role">DRUMS:</div>
+          <div class="member-right">
+            <span class="member-name">mabo</span>
+            <div class="member-sns-icons">
+              <a href="#" target="_blank" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
+              <a href="#" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            </div>
           </div>
         </div>
 
@@ -359,7 +404,7 @@
       <h2>YouTube</h2>
       <p>最新動画・ライブ映像はこちら：</p>
 
-      <!-- ▶▶ ここをあなたのチャンネルURLに変更してね -->
+      <!-- ▶ チャンネルURLに変更してね -->
       <a class="yt-link" href="https://www.youtube.com/" target="_blank">
         <i class="fa-brands fa-youtube"></i>
         <span>DOUBLE STANDARD Official YouTube</span>
@@ -370,7 +415,7 @@
     <section id="contact">
       <h2>Contact</h2>
       <p>ライブのお誘い・お問い合わせはこちら</p>
-      <!-- メールアドレスを変更してね -->
+      <!-- メールアドレスを書き換え -->
       <p><a href="mailto:example@example.com" style="color:#fff;">example@example.com</a></p>
     </section>
 
