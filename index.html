@@ -25,9 +25,32 @@
         crossorigin="anonymous"
         referrerpolicy="no-referrer" />
   <style>
+  /* --- Futura Italic --- */
+@font-face {
+  font-family: "FuturaItalic";
+  src: url("fonts/Futura%20Italic.ttf") format("truetype");
+  font-weight: normal;
+  font-style: italic;
+}
+@font-face {
+  font-family: "FuturaMediumItalic";
+  src: url("fonts/Futura Medium Italic.otf") format("opentype");
+  font-weight: 500;
+  font-style: italic;
+}
+
+/* --- Futura Light --- */
+@font-face {
+  font-family: "FuturaLight";
+  src: url("fonts/Futura-light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+}
+
+
     body {
       margin: 0;
-      font-family: "Helvetica Neue", Arial, sans-serif;
+      font-family: "FuturaLight", "Noto Sans JP", sans-serif;
       background: #000;
       color: #eee;
       overflow-x: hidden;
@@ -89,16 +112,29 @@
 
     /* ===== タイトルの「シャッ」とアニメ ===== */
     .hero-title {
-      font-size: 3rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      margin: 0;
-      overflow: hidden;
-    }
-.hero-title {
-  font-family: 'Montserrat', sans-serif;
-  font-style: italic;
-  font-weight: 700;
+  font-family: "FuturaMediumItalic", "Helvetica Neue", Arial, sans-serif;
+  font-size: 3rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin: 0;
+  overflow: hidden;
+}
+
+.hero-sub,
+nav a,h2,.live-meta,.live-title,.member-intro,.member-role-label,.member-name,.yt-link span,p {
+  font-family: "FuturaLight", "Noto Sans JP", sans-serif;
+  font-weight: 300;
+  font-size: 0.9rem;
+  letter-spacing: 0.1em;
+}
+
+
+.hero-sub {
+  text-transform: uppercase;
+  opacity: 0;
+  transform: translateX(-30px);
+  animation: sub-fade 0.9s ease-out forwards;
+  animation-delay: 0.4s;
 }
 
     .hero-title span {
@@ -375,7 +411,7 @@ nav {
 
   .hero-title {
     font-size: 1.8rem;
-    letter-spacing: 0.16em;
+    letter-spacing: 0.1em;
   }
 
   .hero-sub {
@@ -641,6 +677,7 @@ nav {
     opacity: 0;
   }
 }
+
 
   </style>
 
