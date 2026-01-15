@@ -575,7 +575,7 @@ nav {
   opacity: 1;
   transform: translateY(0);
 }
-.hero-title {
+<!--.hero-title {
   position: relative;
   /* もともとの設定そのままでOK */
 }
@@ -677,8 +677,30 @@ nav {
   95% {
     opacity: 0;
   }
+}-->
+
+.logo-glitch {
+  width: 80%;
+  max-width: 600px;
+  animation: logoShake 2s infinite;
+  position: relative;
 }
 
+/* 微妙に揺らすアニメーション */
+@keyframes logoShake {
+  0%, 92%, 100% {
+    transform: none;
+  }
+  93% {
+    transform: translate(-1px, 0);
+  }
+  94% {
+    transform: translate(2px, -1px);
+  }
+  95% {
+    transform: translate(-2px, 1px);
+  }
+}
 
   </style>
 
@@ -690,9 +712,10 @@ nav {
   <div class="hero">
     <div class="hero-inner">
       <!-- span でくくってシャッとアニメ -->
-      <h1 class="hero-title glitch" data-text="DOUBLE STANDARD">
-  <span>DOUBLE STANDARD</span>
+      <h1 class="hero-title">
+  <img src="img/logo.png" class="logo-glitch" alt="DOUBLE STANDARD">
 </h1>
+
 
       <div class="hero-sub">LIVE SESSION PROJECT</div>
     </div>
