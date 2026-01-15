@@ -16,6 +16,7 @@
 <meta name="twitter:title" content="DOUBLE STANDARD - Official Site">
 <meta name="twitter:description" content="DOUBLE STANDARD 最新ライブ情報・メンバー紹介はこちら">
 <meta property="og:image" content="https://akane-kkr.github.io/DoubleStandard-site/img/ogp.png">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
 
   <!-- SNSアイコン用（Font Awesome） -->
   <link rel="stylesheet"
@@ -94,6 +95,11 @@
       margin: 0;
       overflow: hidden;
     }
+.hero-title {
+  font-family: 'Montserrat', sans-serif;
+  font-style: italic;
+  font-weight: 700;
+}
 
     .hero-title span {
       display: inline-block;
@@ -532,6 +538,109 @@ nav {
   opacity: 1;
   transform: translateY(0);
 }
+.hero-title {
+  position: relative;
+  /* もともとの設定そのままでOK */
+}
+
+/* グリッチのベース */
+.glitch {
+  position: relative;
+}
+
+/* ノイズ用のダブり文字（赤っぽいずれ） */
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  opacity: 0;                /* ふだんは見えない */
+}
+
+/* 赤／シアンみたいなズレ色 */
+.glitch::before {
+  color: #ff3366;
+}
+
+.glitch::after {
+  color: #33ffff;
+}
+
+/* たまにガガッとするアニメーション */
+.glitch {
+  animation: glitch-main 4s infinite;
+}
+
+.glitch::before {
+  animation: glitch-before 4s infinite;
+}
+
+.glitch::after {
+  animation: glitch-after 4s infinite;
+}
+
+/* 本体をちょっとだけ揺らす */
+@keyframes glitch-main {
+  0%, 92%, 100% {
+    transform: none;
+  }
+  93% {
+    transform: translate(-1px, 0);
+  }
+  94% {
+    transform: translate(2px, -1px);
+  }
+  95% {
+    transform: translate(-2px, 1px);
+  }
+}
+
+/* 赤 */
+@keyframes glitch-before {
+  0%, 92%, 100% {
+    opacity: 0;
+    clip-path: inset(0 0 0 0);
+    transform: none;
+  }
+  93% {
+    opacity: 1;
+    clip-path: inset(0 0 60% 0);
+    transform: translate(-2px, -1px);
+  }
+  94% {
+    clip-path: inset(40% 0 0 0);
+    transform: translate(2px, 1px);
+  }
+  95% {
+    opacity: 0;
+  }
+}
+
+/* シアン */
+@keyframes glitch-after {
+  0%, 92%, 100% {
+    opacity: 0;
+    clip-path: inset(0 0 0 0);
+    transform: none;
+  }
+  93% {
+    opacity: 1;
+    clip-path: inset(10% 0 50% 0);
+    transform: translate(2px, 1px);
+  }
+  94% {
+    clip-path: inset(50% 0 10% 0);
+    transform: translate(-2px, -1px);
+  }
+  95% {
+    opacity: 0;
+  }
+}
 
   </style>
 
@@ -543,7 +652,10 @@ nav {
   <div class="hero">
     <div class="hero-inner">
       <!-- span でくくってシャッとアニメ -->
-      <h1 class="hero-title"><span>DOUBLE STANDARD</span></h1>
+      <h1 class="hero-title glitch" data-text="DOUBLE STANDARD">
+  <span>DOUBLE STANDARD</span>
+</h1>
+
       <div class="hero-sub">LIVE SESSION PROJECT</div>
     </div>
   </div>
