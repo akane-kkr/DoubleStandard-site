@@ -11,7 +11,6 @@
         integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
         crossorigin="anonymous"
         referrerpolicy="no-referrer" />
-
   <style>
     body {
       margin: 0;
@@ -39,11 +38,10 @@
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(180deg, rgba(0,0,0,0.4), rgba(0,0,0,0.85)),
-        url("img/header.jpg") center center / cover no-repeat;
+        linear-gradient(180deg, rgba(0,0,0,0.45), rgba(0,0,0,0.85)),
+        url("img/all.jpg") center center / cover no-repeat;
+      filter: grayscale(100%) brightness(0.6);
       z-index: 1;
-      transform: scale(1.05);
-      filter: blur(0.5px);
     }
 
     /* 薄い光がスーッと動く */
@@ -82,7 +80,7 @@
       letter-spacing: 0.2em;
       text-transform: uppercase;
       margin: 0;
-      overflow: hidden; /* 左から右のマスク用 */
+      overflow: hidden;
     }
 
     .hero-title span {
@@ -163,8 +161,9 @@
       padding-left: 10px;
       margin-top: 60px;
       text-transform: uppercase;
-      letter-spacing: .12em;
-      font-size: 1rem;
+      letter-spacing: .18em;
+      font-size: 1.05rem;
+      font-weight: 700;
     }
 
     /* ===== LIVE ===== */
@@ -173,67 +172,143 @@
       padding: 12px 0;
     }
 
-    /* ===== MEMBER（ONE OK ROCK 風）===== */
-    #member {
-      margin-top: 40px;
-    }
+/* ===== MEMBER（カード型レイアウト）===== */
+#member {
+  margin-top: 40px;
+}
 
-    .member-intro {
-      font-size: 0.9rem;
-      opacity: 0.8;
-      margin-top: 10px;
-    }
+.member-intro {
+  font-size: 0.9rem;
+  opacity: 0.8;
+  margin-top: 10px;
+}
 
-    .member-table {
-      margin-top: 24px;
-      font-size: 0.95rem;
-      letter-spacing: 0.12em;
-    }
+/* カードを縦に並べる */
+.member-list {
+  margin-top: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
 
-    .member-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 8px 0;
-      border-bottom: 1px solid #222;
-    }
+/* 各メンバーのカード */
+.member-card {
+  display: flex;
+  gap: 18px;
+  padding: 18px 18px;
+  border-radius: 10px;
+  border: 1px solid #222;
+  background: rgba(255, 255, 255, 0.01);
+  transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
 
-    .member-role {
-      opacity: 0.7;
-      text-transform: uppercase;
-      font-size: 0.85rem;
-    }
+/* ホバー時に少し浮かせる */
+.member-card:hover {
+  background: rgba(255, 255, 255, 0.04);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+}
 
-    .member-right {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-    }
+/* 写真：丸・少し大きめ */
+.member-photo {
+  width: 80px;     /* 好みで 80〜100px に調整してOK */
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  filter: grayscale(30%);
+  opacity: 0.95;
+  transition: 0.25s ease;
+  border: 1px solid rgba(255,255,255,0.3);
+}
 
-    .member-name {
-      font-weight: 600;
-      font-size: 0.95rem;
-    }
+/* ホバーでちょい色が戻る */
+.member-card:hover .member-photo {
+  filter: grayscale(0%);
+  opacity: 1;
+}
 
-    .member-sns-icons {
-      display: flex;
-      gap: 8px;
-      font-size: 0.95rem;
-    }
+/* 右側全体 */
+.member-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
 
-    .member-sns-icons a {
-      color: #eee;
-      opacity: 0.8;
-      text-decoration: none;
-      transition: 0.2s;
-    }
+/* 上段：役割＋名前 vs SNS アイコン */
+.member-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
 
-    .member-sns-icons a:hover {
-      opacity: 1;
-      transform: translateY(-1px);
-    }
+/* 左側（役割＋名前） */
+.member-title {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.member-role-label {
+  font-size: 0.8rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+.member-name {
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+/* 好きな音楽などのテキスト */
+.member-bio {
+  font-size: 0.85rem;
+  line-height: 1.6;
+  opacity: 0.85;
+}
+
+/* SNSアイコン行（右上）*/
+.member-sns-icons {
+  display: flex;
+  gap: 10px;
+  font-size: 0.95rem;
+}
+
+.member-sns-icons a {
+  color: #eee;
+  opacity: 0.8;
+  text-decoration: none;
+  transition: 0.2s;
+}
+
+.member-sns-icons a:hover {
+  opacity: 1;
+  transform: translateY(-1px);
+}
+
+/* スマホ用調整 */
+@media (max-width: 600px) {
+  .member-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .member-photo {
+    width: 72px;
+    height: 72px;
+  }
+
+  .member-top {
+    width: 100%;
+    align-items: flex-start;
+  }
+
+  .member-sns-icons {
+    justify-content: flex-end;
+  }
+}
 
     /* ===== YouTubeリンク ===== */
     .yt-link {
@@ -262,27 +337,172 @@
       padding-bottom: 40px;
     }
 
-    /* ===== スマホ ===== */
-    @media (max-width: 600px) {
-      .hero {
-        height: 70vh;
-      }
-      .hero-title {
-        font-size: 2.1rem;
-        letter-spacing: 0.12em;
-      }
-      .member-row {
-        flex-direction: row;
-        align-items: flex-start;
-      }
-      .member-role {
-        min-width: 80px;
-      }
-      .member-right {
-        justify-content: flex-start;
-      }
-    }
+/* ===== スマホ ===== */
+@media (max-width: 600px) {
+  .hero {
+    height: 70vh;
+    padding: 0 16px;
+    box-sizing: border-box;
+  }
+
+  .hero-title {
+    font-size: 1.8rem;
+    letter-spacing: 0.16em;
+  }
+
+  .hero-sub {
+    font-size: 0.8rem;
+    letter-spacing: 0.2em;
+  }
+
+  /* MEMBER スマホ調整（横並びのまま） */
+  .member-card {
+    flex-direction: row;          /* ← column を row に */
+    align-items: flex-start;
+    text-align: left;             /* ← 中央寄せをやめる */
+    gap: 12px;
+  }
+
+  .member-photo {
+    width: 68px;                  /* ちょっと小さめ */
+    height: 68px;
+  }
+
+  .member-body {
+    gap: 6px;
+  }
+
+  .member-top {
+    width: 100%;
+    align-items: flex-start;
+  }
+
+  .member-bio {
+    font-size: 0.8rem;
+  }
+}
+/* ===== LIVE 詳細カード ===== */
+.live-card {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid #222;
+  border-radius: 12px;
+  margin-top: 20px;
+  transition: 0.25s ease;
+}
+
+.live-card:hover {
+  background: rgba(255,255,255,0.06);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+}
+
+/* 画像 */
+.live-flyer {
+  width: 220px;
+  border-radius: 8px;
+  object-fit: cover;
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+/* テキスト部分 */
+.live-details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.live-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.live-meta {
+  font-size: 0.9rem;
+  opacity: 0.85;
+  line-height: 1.6;
+}
+
+@media (max-width: 600px) {
+  .live-card {
+    flex-direction: column;
+    padding: 16px;
+  }
+
+  .live-flyer {
+    width: 100%;
+    height: auto;
+  }
+}
+
+/* ===== LIVE シェアボタン ===== */
+.live-share {
+  margin-top: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.share-label {
+  font-size: 0.8rem;
+  opacity: 0.7;
+  margin-right: 8px;
+}
+
+.share-btn {
+  border: 1px solid #444;
+  background: #111;
+  color: #eee;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.share-btn i {
+  font-size: 0.9rem;
+}
+
+.share-btn:hover {
+  background: #fff;
+  color: #000;
+}
+
+/* ===== 画像拡大モーダル ===== */
+.img-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.9);
+  display: none;             /* 非表示スタート */
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.img-modal img {
+  max-width: 90vw;
+  max-height: 90vh;
+  border-radius: 8px;
+  box-shadow: 0 0 25px rgba(0,0,0,0.8);
+}
+
+/* スマホでも余白を少し確保 */
+@media (max-width: 600px) {
+  .img-modal img {
+    max-width: 94vw;
+    max-height: 80vh;
+  }
+}
+
   </style>
+
 </head>
 
 <body>
@@ -317,87 +537,162 @@
     <section id="live">
       <h2>Live</h2>
 
-      <div class="live-item">
-        <div><strong>2026/03/28 (Sat) 中津 vi-code</strong></div>
-        <div>OPEN 14:30 / START 15:00</div>
-        <div>¥3,000 + 1D (¥600)</div>
-      </div>
+<!-- LIVE FLYER CARD -->
+<div class="live-card">
+  <img src="img/live0328.JPG" alt="2026/03/28 ライブフライヤー" class="live-flyer">
+
+  <div class="live-details">
+
+    <div class="live-title">
+      2026/03/28 (Sat) — 中津 vi-code
+    </div>
+
+    <div class="live-meta">
+      <strong>OPEN：</strong>14:30　<strong>START：</strong>15:00<br>
+      <strong>Ticket：</strong>¥3,000 + 1D(¥600)<br>
+      <strong>Place：</strong>大阪・中津 vi-code<br>
+    </div>
+
+    <p class="live-meta">
+      今回はエモーショナルな洋楽カバーを中心に、新しくセットリストも刷新。
+      DOUBLE STANDARD の“今”を感じる濃いステージを予定しています。  
+      ぜひ遊びに来てください！
+    </p>
+
+    <!-- シェアボタン -->
+    <div class="live-share">
+      <span class="share-label">Share：</span>
+      <button type="button" class="share-btn" data-share="native">
+        <i class="fa-solid fa-share-nodes"></i> シェア
+      </button>
+      <button type="button" class="share-btn" data-share="x">
+        <i class="fa-brands fa-x-twitter"></i> X
+      </button>
+      <button type="button" class="share-btn" data-share="copy">
+        <i class="fa-solid fa-link"></i> URLコピー
+      </button>
+    </div>
+
+
+  </div>
+</div>
 
     </section>
 
-    <!-- MEMBER（OOR風） -->
-    <section id="member">
-      <h2>Member</h2>
+<section id="member">
+  <h2>Member</h2>
 
-      <p class="member-intro">
-        Emotive Rock Cover Band "DOUBLE STANDARD"<br>
-        Osaka, Japan.
-      </p>
+  <p class="member-intro">
+    Emotive Rock Cover Band "DOUBLE STANDARD"<br>
+    Osaka, Japan.
+  </p>
 
-      <div class="member-table">
-        <!-- Vo -->
-        <div class="member-row">
-          <div class="member-role">VOCAL:</div>
-          <div class="member-right">
-            <span class="member-name">きり</span>
-            <div class="member-sns-icons">
-              <!-- URLが決まったら # を書き換えてね -->
-              <a href="#" target="_blank" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
-              <a href="#" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-            </div>
+  <div class="member-list">
+
+    <!-- Vo. きり -->
+    <article class="member-card">
+      <img src="img/kiri.JPG" alt="きり" class="member-photo">
+      <div class="member-body">
+        <div class="member-top">
+          <div class="member-title">
+            <span class="member-role-label">VOCAL</span>
+            <span class="member-name">kiri</span>
+          </div>
+          <div class="member-sns-icons">
+            <a href="#" target="_blank" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="#" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
           </div>
         </div>
+        <p class="member-bio">
+          好きな音楽：○○○ / △△△ など。エモーショナルな洋楽ロックとJ-POPをルーツに、感情の振れ幅が大きいボーカルを担当。
+        </p>
+      </div>
+    </article>
 
-        <!-- Gt -->
-        <div class="member-row">
-          <div class="member-role">GUITAR:</div>
-          <div class="member-right">
+    <!-- Gt. YouthK -->
+    <article class="member-card">
+      <img src="img/youthk.JPG" alt="YouthK" class="member-photo">
+      <div class="member-body">
+        <div class="member-top">
+          <div class="member-title">
+            <span class="member-role-label">GUITAR</span>
             <span class="member-name">YouthK</span>
-            <div class="member-sns-icons">
-              <a href="#" target="_blank" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
-              <a href="#" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-            </div>
+          </div>
+          <div class="member-sns-icons">
+            <a href="#" target="_blank" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="#" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
           </div>
         </div>
-
-        <!-- Ba -->
-        <div class="member-row">
-          <div class="member-role">BASS:</div>
-          <div class="member-right">
-            <span class="member-name">あかね</span>
-            <div class="member-sns-icons">
-              <a href="#" target="_blank" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
-              <a href="#" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Key -->
-        <div class="member-row">
-          <div class="member-role">KEYS:</div>
-          <div class="member-right">
-            <span class="member-name">プッチー</span>
-            <div class="member-sns-icons">
-              <a href="#" target="_blank" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
-              <a href="#" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Dr -->
-        <div class="member-row">
-          <div class="member-role">DRUMS:</div>
-          <div class="member-right">
-            <span class="member-name">mabo</span>
-            <div class="member-sns-icons">
-              <a href="#" target="_blank" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
-              <a href="#" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-            </div>
-          </div>
-        </div>
-
+        <p class="member-bio">
+          好きな音楽：○○○ / △△△。クリーンから轟音まで、楽曲に合わせた空気感づくりとメロディアスなフレーズが持ち味。
+        </p>
       </div>
-    </section>
+    </article>
+
+    <!-- Ba. あかね -->
+    <article class="member-card">
+      <img src="img/akane.JPG" alt="あかね" class="member-photo">
+      <div class="member-body">
+        <div class="member-top">
+          <div class="member-title">
+            <span class="member-role-label">BASS</span>
+            <span class="member-name">あかね</span>
+          </div>
+          <div class="member-sns-icons">
+            <a href="#" target="_blank" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="#" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          </div>
+        </div>
+        <p class="member-bio">
+          好きな音楽：○○○ / △△△。ボトムを支えつつ、歌とドラムの隙間を埋めるグルーヴ感重視のベーススタイル。
+        </p>
+      </div>
+    </article>
+
+    <!-- Key. プッチー -->
+    <article class="member-card">
+      <img src="img/pucchi.JPG" alt="プッチー" class="member-photo">
+      <div class="member-body">
+        <div class="member-top">
+          <div class="member-title">
+            <span class="member-role-label">KEYS</span>
+            <span class="member-name">プッチー</span>
+          </div>
+          <div class="member-sns-icons">
+            <a href="#" target="_blank" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="#" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          </div>
+        </div>
+        <p class="member-bio">
+          好きな音楽：○○○ / △△△。シンセとピアノでサウンドに厚みと色を足す、バンドの空気担当。
+        </p>
+      </div>
+    </article>
+
+    <!-- Dr. mabo -->
+    <article class="member-card">
+      <img src="img/mabo.JPG" alt="mabo" class="member-photo">
+      <div class="member-body">
+        <div class="member-top">
+          <div class="member-title">
+            <span class="member-role-label">DRUMS</span>
+            <span class="member-name">mabo</span>
+          </div>
+          <div class="member-sns-icons">
+            <a href="#" target="_blank" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="#" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          </div>
+        </div>
+        <p class="member-bio">
+          好きな音楽：○○○ / △△△。タイトなビートとダイナミクスで、バンド全体のノリをコントロールするドラマー。
+        </p>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+
 
     <!-- YOUTUBE -->
     <section id="music">
@@ -405,7 +700,7 @@
       <p>最新動画・ライブ映像はこちら：</p>
 
       <!-- ▶ チャンネルURLに変更してね -->
-      <a class="yt-link" href="https://www.youtube.com/" target="_blank">
+      <a class="yt-link" href="https://www.youtube.com/@DOUBLESTANDARD-h1l" target="_blank">
         <i class="fa-brands fa-youtube"></i>
         <span>DOUBLE STANDARD Official YouTube</span>
       </a>
@@ -424,6 +719,95 @@
   <div class="footer">
     © 2026 DOUBLE STANDARD. All Rights Reserved.
   </div>
+<!-- フライヤー拡大表示用モーダル -->
+<div id="img-modal" class="img-modal">
+  <img id="img-modal-img" src="" alt="live flyer">
+</div>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    /* ===== 画像モーダル ===== */
+    const flyer = document.querySelector('.live-flyer');
+    const modal = document.getElementById('img-modal');
+    const modalImg = document.getElementById('img-modal-img');
+
+    if (flyer && modal && modalImg) {
+      flyer.addEventListener('click', function () {
+        modalImg.src = this.src;
+        modal.style.display = 'flex';
+      });
+
+      // モーダルをタップ / クリックで閉じる
+      modal.addEventListener('click', function () {
+        modal.style.display = 'none';
+        modalImg.src = '';
+      });
+    }
+
+    /* ===== シェアボタン ===== */
+    const shareButtons = document.querySelectorAll('.share-btn');
+    const shareUrl = window.location.href.split('#')[0]; // #以降をカット
+
+    const shareText =
+`【DOUBLE STANDARD ライブ情報】
+
+2026/03/28 (Sat)
+OPEN：14:30
+START：15:00
+Ticket：¥3,000 + 1D(¥600)
+Place：大阪・中津 vi-code
+
+詳しくはこちら👇`;
+
+    shareButtons.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        const type = this.dataset.share;
+
+        /* ネイティブ共有 */
+        if (type === 'native') {
+          if (navigator.share) {
+            navigator.share({
+              title: 'DOUBLE STANDARD ライブ',
+              text: shareText,
+              url: shareUrl
+            });
+          } else {
+            alert("このブラウザは共有に対応していません");
+          }
+        }
+
+        /* X 共有 */
+        if (type === 'x') {
+          const xUrl =
+            'https://twitter.com/intent/tweet?text=' +
+            encodeURIComponent(shareText) +
+            '&url=' +
+            encodeURIComponent(shareUrl);
+          window.open(xUrl, '_blank');
+        }
+
+        /* URLコピー */
+        if (type === 'copy') {
+          const copyText = shareText + "\n" + shareUrl;
+
+          if (navigator.clipboard) {
+            navigator.clipboard.writeText(copyText).then(() => {
+              alert("ライブ情報をコピーしました！");
+            });
+          } else {
+            // フォールバック
+            const temp = document.createElement('textarea');
+            temp.value = copyText;
+            document.body.appendChild(temp);
+            temp.select();
+            document.execCommand('copy');
+            document.body.removeChild(temp);
+            alert("ライブ情報をコピーしました！");
+          }
+        }
+      });
+    });
+  });  // ★ ここで DOMContentLoaded を閉じる！
+</script>
 
 </body>
 </html>
